@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Hacer la reservacion</title>
+  <style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+
+		h1 {
+			text-align: center;
+			margin-top: 30px;
+			color: #333;
+		}
+
+		form {
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0,0,0,0.2);
+			width: 50%;
+			margin: 0 auto;
+			margin-top: 30px;
+			margin-bottom: 30px;
+		}
+
+		p {
+			margin-bottom: 5px;
+			color: #333;
+			font-weight: bold;
+		}
+
+		select, input[type="text"], input[type="datetime-local"], input[type="submit"] {
+			display: block;
+			width: 100%;
+			padding: 10px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			margin-bottom: 20px;
+			box-sizing: border-box;
+		}
+
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			cursor: pointer;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+	</style>
+</head>
+<body>
+<h1>Hacer reservacion</h1>
+<form th:action="@{/reservation}" th:object="${reservationDTO}" method="post">
+  <p>Selecciona el parqueadero:</p>
+  <select th:field="*{parkingLotId}">
+    <option value="">Seleccionar el parquedero</option>
+    <option th:each="parkingLot : ${parkingLots}" th:value="${parkingLot.id}" th:text="${parkingLot.name}"></option>
+  </select>
+  <p>Introduzca su nombre:</p>
+  <input type="text" th:field="*{name}">
+  <p>Ingrese su Matrícula::</p>
+  <input type="text" th:field="*{licensePlate}">
+  <p>Ingrese su número telefónico:</p>
+  <input type="text" th:field="*{phoneNumber}">
+  <p>Ingrese la fecha y hora de su reserva:</p>
+  <input type="datetime-local" th:field="*{dateTime}">
+  <input type="submit" value="Hacer reserva">
+</form>
+</body>
+</html>
+

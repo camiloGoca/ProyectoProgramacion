@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmacion de reservacion </title>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li {      //margen inferior
+      margin-bottom: 10px;
+    }
+    strong {
+      font-weight: bold;
+      color: #666;
+    }
+    span {   //color de el texto
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+<h1>Reservation Confirmation</h1>
+<p>Su reserva ha sido realizada:</p>
+<ul>
+    <li><strong>Name:</strong> <span th:text="${reservation.name}"></span></li>
+    <li><strong>License Plate:</strong> <span th:text="${reservation.licensePlate}"></span></li>
+    <li><strong>Phone Number:</strong> <span th:text="${reservation.phoneNumber}"></span></li>
+    <li><strong>Parking Lot:</strong> <span th:text="${reservation.parkingLotName}"></span></li>
+    <li><strong>Date and Time:</strong> <span th:text="${reservation.dateTime}"></span></li>
+    <li><strong>Price:</strong> <span th:text="'$' + ${reservation.price}"></span></li>
+</ul>
+</body>
+</html>
