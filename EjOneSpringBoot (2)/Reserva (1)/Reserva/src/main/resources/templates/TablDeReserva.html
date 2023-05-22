@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TABLA DE REGISTRO</title>
+    <link rel="icon" href="/logo.png"  >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url("/fondo.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        table{
+
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+
+<body>
+
+<!--Barra de navegación-->
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/inicio">
+            <!--Logo-->
+            <img src="/icono.jpg" alt="Logo" width="32" height="32" class="d-inline-block align-text-top">
+            reservaciones
+        </a>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/Reserva/parqueadero/editar">Añadir Reserva</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--Tabla-->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 mx-auto">
+            <table class="table table-ligth table-striped-columns text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">NOMBRE</th>
+                        <th class="center">TELEFONO</th>
+                        <th class="center">HORA Y FECHA</th>
+                        <th class="center">TIPO</th>
+                        <th class="center">PARQUEADERO</th>
+                        <th class="center">ACCION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr th:each="reservation:${reservation}">
+                    <td th:text="${reservation.id}"></td>
+                    <td th:text="${reservation.nombre}"></td>
+                    <td th:text="${reservation.telefono}"></td>
+                    <td th:text="${reservation.hora_fecha}"></td>
+                    <td th:text="${reservation.tipo}"></td>
+                    <td th:text="${reservation.parqueadero}"></td>
+                    <td>
+                        <a th:href="@{/editar/}+${reservation.id}" class="btn btn-warning">Editar</a>
+                        <a th:href="@{/eliminar/}+${reservation.id}"  class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <form>
+            </form>
+        </div>
+
+
+    </div>
+</div>
+</body>
+</html>

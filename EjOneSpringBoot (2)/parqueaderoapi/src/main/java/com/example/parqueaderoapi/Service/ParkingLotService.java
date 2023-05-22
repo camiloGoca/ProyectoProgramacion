@@ -20,14 +20,16 @@ public class ParkingLotService {
         this.parkingLotRepository = parkingLotRepository;
     }
 
+    // Recuperar una lista de los lotes de estacionamiento de la BD
     public List<ParkingLotDTO> getAllParkingLots() {
         List<ParkingLot> parkingLots = parkingLotRepository.findAll();
         return parkingLots.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
-
+// Recuperar un objeto de la lista de lotes por id
     public ParkingLotDTO getParkingLotById(Long id) {
         ParkingLot parkingLot = parkingLotRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("ParkingLot", "id", id));
+        //Descargar la libreria
         return mapToDTO(parkingLot);
     }
 

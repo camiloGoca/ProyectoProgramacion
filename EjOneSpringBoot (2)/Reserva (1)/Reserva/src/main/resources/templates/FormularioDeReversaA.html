@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="icon" href="/logo.png">
+  <title>Hacer la reservacion A</title>
+  <style>
+		body{
+
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+          background-image: url(/fondo.jpg);
+		}
+
+		h1 {
+			text-align: center;
+			margin-top: 30px;
+			color: red;
+		}
+
+		form {
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0,0,0,0.2);
+			width: 50%;
+			margin: 0 auto;
+			margin-top: 30px;
+			margin-bottom: 30px;
+		}
+
+		p {
+			margin-bottom: 5px;
+			color: #333;
+			font-weight: bold;
+          color: whitesmoke;
+		}
+
+		select, input[type="text"], input[type="datetime-local"], input[type="submit"] {
+			display: block;
+			width: 100%;
+			padding: 10px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			margin-bottom: 20px;
+			box-sizing: border-box;
+		}
+
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			cursor: pointer;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+	</style>
+</head>
+<body>
+<h1>Hacer reservacion</h1>
+<form th:action="@{/save}" th:object="${reservation}" method="post" style="background-color: transparent;">
+  <p>Selecciona el parqueadero:</p>
+  <div class="form-group">
+    <select th:field="*{parqueadero}" >
+      <option value="Parqueadero A">Parqueadero A</option>
+
+      <option th:each="opcion : ${opciones}" th:value="${opcion}" th:text="${opcion}"></option>
+    </select>
+  </div>
+  <select th:field="*{tipo}">
+    <option value="0">Seleccionar el parquedero</option>
+    <option value="1 park A">Parqueadero 1</option>
+    <option value="2 park A">Parqueadero 2</option>
+    <option value="3 park A">Parqueadero 3</option>
+    <option value="4 park A">Parqueadero 4</option>
+    <option value="5 park A">Parqueadero 5</option>
+    <option value="6 park A">Parqueadero 6</option>
+    <option value="7 park A">Parqueadero 7</option>
+    <option value="8 park A">Parqueadero 8</option>
+    <option value="9 park A">Parqueadero 9</option>
+    <option value="10 park A">Parqueadero 10</option>
+    <option th:each="parkingLot : ${opciones}" th:value="${opcio}" th:text="${opcio}"></option>
+  </select>
+  <p>Introduzca su nombre:</p>
+  <input type="text" th:field="*{nombre}">
+  <p>Ingrese su Matrícula::</p>
+  <input type="text" th:field="*{matrícula}">
+  <p>Ingrese su número telefónico:</p>
+  <input type="text" th:field="*{telefono}">
+  <p>Ingrese la fecha y hora de su reserva:</p>
+  <input type="date" class="form-control" required th:field="*{hora_fecha}">
+  <input type="submit" value="Hacer reserva">
+</form>
+</body>
+</html>
+
