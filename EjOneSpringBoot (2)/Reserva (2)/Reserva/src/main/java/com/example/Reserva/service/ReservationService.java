@@ -1,7 +1,7 @@
 package com.example.Reserva.service;
 
 import com.example.Reserva.modelo.Reservation;
-import com.example.Reserva.Repository.IReservation;
+import com.example.Reserva.interfaces.IReservation;
 import com.example.Reserva.interfaceService.IReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
